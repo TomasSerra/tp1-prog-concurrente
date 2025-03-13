@@ -25,6 +25,8 @@ pub fn handle_request(request: &str) -> String {
 }
 
 fn extract_base_path(path: &str) -> String {
-    let segments: Vec<&str> = path.split('/').collect();
-    format!("/{}", segments.get(1).unwrap_or(&""))
+    match path.split('?').next() {
+        Some(base) => base.to_string(),
+        None => path.to_string(),
+    }
 }
