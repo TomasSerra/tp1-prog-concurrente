@@ -6,7 +6,7 @@ pub struct PiController;
 impl Controller for PiController {
     fn handle_get(&self, request: &str, path: &str) -> String {
         match path {
-            "/100" => self.calculate_pi_handler(request),
+            "/" => self.calculate_pi_handler(request),
             _ => http_response(404, "text/plain", "Not Found"),
         }
     }
